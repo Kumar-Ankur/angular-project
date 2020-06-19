@@ -1,0 +1,10 @@
+<div *ngFor="let product of products" class="col-sm-5 list">
+  <img
+    class="list_image"
+    src="{{ product.image }}"
+    alt="{{ product.product_name }}"
+  />
+  <span class="list_title">{{ product.product_name }}</span>
+  <span class="list_price">₹ {{ product.price }}</span>
+  <div class="list_desc">{{ product.description }}</div>
+</div>

@@ -1,0 +1,31 @@
+.main {
+  margin-top: 3rem;
+  position: relative;
+
+  &_display {
+    border: 1px solid black;
+    height: 30rem;
+    position: relative;
+    left: -2rem;
+  }
+
+  &_form {
+    border: 1px solid black;
+    height: 30rem;
+  }
+
+  &_logger {
+    border: 1px solid black;
+    height: 30rem;
+    position: relative;
+    left: -2rem;
+    top: 2rem;
+  }
+
+  &_counter {
+    border: 1px solid black;
+    height: 30rem;
+    position: relative;
+    top: 2rem;
+  }
+}

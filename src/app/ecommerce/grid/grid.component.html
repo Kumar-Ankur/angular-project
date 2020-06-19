@@ -1,0 +1,10 @@
+<div *ngFor="let product of products" class="col-sm-2 grid">
+  <img
+    class="grid_image"
+    src="{{ product.image }}"
+    alt="{{ product.product_name }}"
+  />
+  <span class="grid_title">{{ product.product_name }}</span>
+  <span class="grid_price">₹ {{ product.price }}</span>
+  <div class="grid_description">{{ product.description }}</div>
+</div>

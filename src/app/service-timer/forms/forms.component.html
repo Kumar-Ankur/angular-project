@@ -1,0 +1,28 @@
+<div class="input-group forms">
+  <label for="timer">Timer Limit</label>
+  <input
+    type="number"
+    class="form-control"
+    placeholder="Enter timer limit"
+    id="timer"
+    aria-describedby="basic-addon1"
+    value="inputText"
+    (input)="onSelectedInput($event)"
+  />
+</div>
+
+<div class="buttonStyle">
+  <button
+    class="btn btn-primary"
+    style="margin-right: 2rem;"
+    (click)="handleStartPause()"
+  >
+    {{ IsStartVisible() ? "Start" : "Pause" }}
+  </button>
+
+  <button class="btn btn-info" (click)="handleReset()">Reset</button>
+</div>
+
+<div *ngIf="pausedTime.length > 0" class="pauseContent">
+  <div *ngFor="let time of pausedTime">Paused at {{ time }}</div>
+</div>

@@ -1,0 +1,32 @@
+<div class="main">
+  <h2>Timer Using Input and Output Decorator</h2>
+  <hr />
+  <div class="row">
+    <div class="col-md-4 main_display">
+      <app-display [timerLimit]="timerLimit"></app-display>
+    </div>
+    <div class="col-md-6 main_form">
+      <app-forms
+        (emitTimerValue)="setTimerLimit($event)"
+        (emitStartCount)="setStartCount($event)"
+        (emitPausedCount)="setPausedCount($event)"
+        (emitStartTime)="setStartTime($event)"
+        (emitResetStartLogs)="resetStartLogs($event)"
+      ></app-forms>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 main_logger">
+      <app-logger
+        [startTime]="startTime"
+        [resetStartLog]="resetStartLog"
+      ></app-logger>
+    </div>
+    <div class="col-md-5 main_counter">
+      <app-counter-status
+        [startCount]="startCount"
+        [pausedCount]="pausedCount"
+      ></app-counter-status>
+    </div>
+  </div>
+</div>

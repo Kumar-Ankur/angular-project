@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#navbar-collapse-1"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/">ANGULAR</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a routerLink="/">Nested Image</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="ecommerce">E-Commerce Category</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="iotimer">Input Output Timer</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="stimer">Service Timer</a>
+        </li>
+        <li routerLinkActive="active"><a routerLink="table">Table</a></li>
+        <li routerLinkActive="active">
+          <a routerLink="grid">Grid Dynamically</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

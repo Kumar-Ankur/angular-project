@@ -1,0 +1,32 @@
+<table class="table main">
+  <thead>
+    <tr>
+      <th
+        *ngFor="let heading of tableHeading"
+        class="col"
+        style="cursor: pointer;"
+        (click)="handleSort(heading)"
+      >
+        {{ heading }}
+        <span
+          *ngIf="checkArrowVisible() && checkUpArrowVisible(heading)"
+          class="glyphicon glyphicon-circle-arrow-up"
+        ></span>
+        <span
+          *ngIf="checkArrowVisible() && checkDownArrowVisible(heading)"
+          class="glyphicon glyphicon-circle-arrow-down"
+        ></span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <th scope="row">{{ student.id }}</th>
+      <td>{{ student.name }}</td>
+      <td>{{ student.class }}</td>
+      <td>{{ student.sub1 }}</td>
+      <td>{{ student.sub2 }}</td>
+      <td>{{ student.sub3 }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,26 @@
+<div class="nestedContainer">
+  <div *ngFor="let number of numbers; let i = index">
+    <div
+      *ngIf="i !== 8"
+      class="innerDiv"
+      [ngStyle]="{
+        height: getHeight(i + 1) + 'rem',
+        width: getWidth(i + 1) + '%',
+        top: getTop(i) + 'rem',
+        left: getLeft(i) + 'rem'
+      }"
+    ></div>
+    <div
+      *ngIf="i === 8"
+      class="innerDiv"
+      [ngStyle]="{
+        height: getHeight(i + 1) + 'rem',
+        width: getWidth(i + 1) + '%',
+        top: getTop(i) + 'rem',
+        left: getLeft(i) + 'rem'
+      }"
+    >
+      <span class="innerDiv_animation">{{ text }}</span>
+    </div>
+  </div>
+</div>

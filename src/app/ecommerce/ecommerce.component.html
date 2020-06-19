@@ -1,0 +1,46 @@
+<div class="row main">
+  <div class="main_selection">
+    <span (click)="onGridSelected()"
+      ><img class="main_grid" src="../../assets/grid.svg" alt="grid"
+    /></span>
+    <span class="main_separator" (click)="onListSelected()"
+      ><img src="../../assets/list.svg" alt="grid"
+    /></span>
+  </div>
+  <div class="dropdown main_dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Filter By Price <span class="caret"></span>
+    </button>
+    <div class="dropdown-menu item" aria-labelledby="dropdownMenuButton">
+      <div *ngFor="let price of priceList">
+        <div class="dropdown-item" class="list" (click)="filteredList(price)">
+          Price: {{ price }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main_priceContent">
+    <div *ngFor="let priceFilter of filteredPrice" class="main_price">
+      {{ priceFilter }}
+      <span
+        class="main_price_cancel"
+        aria-hidden="true"
+        (click)="removePrice(priceFilter)"
+        >&times;</span
+      >
+    </div>
+  </div>
+  <div *ngIf="isGridSelected">
+    <app-grid [products]="filteredProducts"></app-grid>
+  </div>
+  <div *ngIf="!isGridSelected">
+    <app-list [products]="filteredProducts"></app-list>
+  </div>
+</div>
