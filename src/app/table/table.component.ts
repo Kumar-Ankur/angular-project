@@ -56,11 +56,7 @@ export class TableComponent implements OnInit {
       const sortedData: any = _.orderBy(this.students.slice(), [name], ['asc']);
       this.students = sortedData;
     } else {
-      const sortedData: any = _.orderBy(
-        this.students.slice(),
-        [name],
-        ['desc']
-      );
+      const sortedData: any = _.orderBy(this.students.slice(), [name], ['desc']);
       this.students = sortedData;
     }
   }
