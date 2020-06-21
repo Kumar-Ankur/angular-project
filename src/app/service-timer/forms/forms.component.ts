@@ -14,6 +14,7 @@ export class FormsComponent implements OnInit {
   pausedCount: number;
   pausedTime: number[];
   startTime: string;
+  text: string;
   constructor(private timerService: TimerService) {
     this.inputText = 0;
     this.isTimerStart = false;
@@ -21,17 +22,20 @@ export class FormsComponent implements OnInit {
     this.pausedCount = 0;
     this.pausedTime = [];
     this.startTime = '';
+    this.text = '';
   }
 
   ngOnInit(): void {}
 
-  onSelectedInput(event: any) {
+  onSelectedInput(event: any): void {
     this.inputText = event.target.value;
+    this.text = '';
     this.setToInitialState();
   }
 
   handleStartPause(): void {
     if (this.inputText > 0) {
+      this.text = '';
       this.isTimerStart = !this.isTimerStart;
       if (this.isTimerStart) {
         this.startCount = this.startCount + 1;
@@ -57,7 +61,7 @@ export class FormsComponent implements OnInit {
       }
     }
   }
-  handleReset() {
+  handleReset(): void {
     this.inputText = 0;
     this.setToInitialState();
   }
@@ -75,6 +79,7 @@ export class FormsComponent implements OnInit {
     this.pausedTime = [];
     this.startCount = 0;
     this.pausedCount = 0;
+    this.isTimerStart = false;
     this.timerService.setStartCountValue.next(this.startCount);
     this.timerService.setPausedCountValue.next(this.pausedCount);
     this.timerService.setTimerValue.next(0);

@@ -1,6 +1,14 @@
 <div class="input-group forms">
   <label for="timer">Timer Limit</label>
-  <input type="number" class="form-control" placeholder="Enter timer limit" id="timer" aria-describedby="basic-addon1" (input)="setInput($event)" />
+  <input
+    type="number"
+    class="form-control"
+    placeholder="Enter timer limit"
+    id="timer"
+    aria-describedby="basic-addon1"
+    (input)="setInput($event)"
+    [(ngModel)]="inputText"
+  />
 </div>
 
 <div class="buttonStyle">

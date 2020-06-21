@@ -13,13 +13,12 @@ export class FormsComponent implements OnInit {
   startTime: string;
   timerInterval: any;
   isTimerStart: boolean;
+  inputText: string;
   @Output() emitTimerValue: EventEmitter<number> = new EventEmitter<number>();
   @Output() emitStartCount: EventEmitter<number> = new EventEmitter<number>();
   @Output() emitPausedCount: EventEmitter<number> = new EventEmitter<number>();
   @Output() emitStartTime: EventEmitter<string> = new EventEmitter<string>();
-  @Output() emitResetStartLogs: EventEmitter<boolean> = new EventEmitter<
-    boolean
-  >();
+  @Output() emitResetStartLogs: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {
     this.timerLimit = 0;
@@ -28,17 +27,20 @@ export class FormsComponent implements OnInit {
     this.isTimerStart = false;
     this.pausedTime = [];
     this.startTime = '';
+    this.inputText = '';
   }
 
   ngOnInit(): void {}
 
   setInput(event: any) {
     this.timerLimit = event.target.value;
+    this.inputText = '';
     this.setToInitialState();
   }
 
   handleButton() {
     if (this.timerLimit > 0) {
+      this.inputText = '';
       this.isTimerStart = !this.isTimerStart;
       if (this.isTimerStart) {
         this.startCount = this.startCount + 1;
@@ -83,6 +85,7 @@ export class FormsComponent implements OnInit {
     this.pausedTime = [];
     this.startCount = 0;
     this.pausedCount = 0;
+    this.isTimerStart = false;
     this.emitTimerValue.emit(0);
     this.emitStartCount.emit(this.startCount);
     this.emitPausedCount.emit(this.pausedCount);

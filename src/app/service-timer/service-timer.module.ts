@@ -7,9 +7,10 @@ import { CounterStatusComponent } from './counter-status/counter-status.componen
 import { DisplayComponent } from './display/display.component';
 import { FormsComponent } from './forms/forms.component';
 import { LoggerComponent } from './logger/logger.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, ServiceTimerRoutingModule],
+  imports: [CommonModule, ServiceTimerRoutingModule, FormsModule],
   declarations: [ServiceTimerComponent, CounterStatusComponent, DisplayComponent, FormsComponent, LoggerComponent],
 })
 export class ServiceTimerModule {}

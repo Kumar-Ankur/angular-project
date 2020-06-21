@@ -19,19 +19,19 @@ export class NestedImageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getHeight(index: number) {
+  getHeight(index: number): number {
     return this.height - index * 5;
   }
 
-  getWidth(index: number) {
+  getWidth(index: number): number {
     return this.width - index * 10;
   }
 
-  getTop(index: number) {
+  getTop(index: number): number {
     return this.top + index * 2.3;
   }
 
-  getLeft(index: number) {
+  getLeft(index: number): number {
     return this.left + index * 3.5;
   }
 }

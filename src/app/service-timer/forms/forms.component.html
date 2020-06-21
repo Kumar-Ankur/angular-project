@@ -8,15 +8,12 @@
     aria-describedby="basic-addon1"
     value="inputText"
     (input)="onSelectedInput($event)"
+    [(ngModel)]="text"
   />
 </div>
 
 <div class="buttonStyle">
-  <button
-    class="btn btn-primary"
-    style="margin-right: 2rem;"
-    (click)="handleStartPause()"
-  >
+  <button class="btn btn-primary" style="margin-right: 2rem;" (click)="handleStartPause()">
     {{ IsStartVisible() ? "Start" : "Pause" }}
   </button>
 
