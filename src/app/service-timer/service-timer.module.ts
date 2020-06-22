@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ServiceTimerRoutingModule } from './service-timer-routing.module';
 import { ServiceTimerComponent } from './service-timer.component';
@@ -7,10 +8,10 @@ import { CounterStatusComponent } from './counter-status/counter-status.componen
 import { DisplayComponent } from './display/display.component';
 import { FormsComponent } from './forms/forms.component';
 import { LoggerComponent } from './logger/logger.component';
-import { FormsModule } from '@angular/forms';
+import { NavigationModule } from '../navigation/navigation.module';
 
 @NgModule({
-  imports: [CommonModule, ServiceTimerRoutingModule, FormsModule],
+  imports: [CommonModule, ServiceTimerRoutingModule, FormsModule, NavigationModule],
   declarations: [ServiceTimerComponent, CounterStatusComponent, DisplayComponent, FormsComponent, LoggerComponent],
 })
 export class ServiceTimerModule {}

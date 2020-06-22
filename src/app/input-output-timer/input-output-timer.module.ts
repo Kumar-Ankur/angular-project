@@ -8,15 +8,10 @@ import { DisplayComponent } from './display/display.component';
 import { FormsComponent } from './forms/forms.component';
 import { LoggerComponent } from './logger/logger.component';
 import { CounterStatusComponent } from './counter-status/counter-status.component';
+import { NavigationModule } from '../navigation/navigation.module';
 
 @NgModule({
-  imports: [CommonModule, InputOutputTimerRoutingModule, FormsModule],
-  declarations: [
-    InputOutputTimerComponent,
-    DisplayComponent,
-    FormsComponent,
-    LoggerComponent,
-    CounterStatusComponent,
-  ],
+  imports: [CommonModule, InputOutputTimerRoutingModule, FormsModule, NavigationModule],
+  declarations: [InputOutputTimerComponent, DisplayComponent, FormsComponent, LoggerComponent, CounterStatusComponent],
 })
 export class InputOutputTimerModule {}

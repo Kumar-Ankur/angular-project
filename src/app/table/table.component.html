@@ -1,32 +1,41 @@
-<table class="table main">
-  <thead>
-    <tr>
-      <th
-        *ngFor="let heading of tableHeading"
-        class="col"
-        style="cursor: pointer;"
-        (click)="handleSort(heading)"
-      >
-        {{ heading }}
-        <span
-          *ngIf="checkArrowVisible() && checkUpArrowVisible(heading)"
-          class="glyphicon glyphicon-circle-arrow-up"
-        ></span>
-        <span
-          *ngIf="checkArrowVisible() && checkDownArrowVisible(heading)"
-          class="glyphicon glyphicon-circle-arrow-down"
-        ></span>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let student of students">
-      <th scope="row">{{ student.id }}</th>
-      <td>{{ student.name }}</td>
-      <td>{{ student.class }}</td>
-      <td>{{ student.sub1 }}</td>
-      <td>{{ student.sub2 }}</td>
-      <td>{{ student.sub3 }}</td>
-    </tr>
-  </tbody>
-</table>
+<app-navigation></app-navigation>
+<hr class="divider mt-0 mb-0" />
+<section class="section">
+  <div class="container mb-5">
+    <h1 class="title is-size-3 has-text-grey is-family-secondary mb-5">
+      Table
+    </h1>
+  </div>
+  <div class="container">
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th
+            *ngFor="let heading of tableHeading"
+            class="col"
+            style="cursor: pointer;"
+            (click)="handleSort(heading)"
+          >
+            {{ heading }}
+            <span *ngIf="checkArrowVisible() && checkUpArrowVisible(heading)">
+              <i class="fa fa-arrow-up"></i>
+            </span>
+            <span *ngIf="checkArrowVisible() && checkDownArrowVisible(heading)">
+              <i class="fa fa-arrow-down"></i>
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <th scope="row">{{ student.id }}</th>
+          <td>{{ student.name }}</td>
+          <td>{{ student.class }}</td>
+          <td>{{ student.sub1 }}</td>
+          <td>{{ student.sub2 }}</td>
+          <td>{{ student.sub3 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

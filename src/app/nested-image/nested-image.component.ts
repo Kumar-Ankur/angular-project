@@ -9,29 +9,29 @@ export class NestedImageComponent implements OnInit {
   numbers;
   text;
   constructor() {
-    this.numbers = Array(9).fill(0);
+    this.numbers = Array(11).fill(0);
     this.text = 'Floating Text Using Angular';
   }
-  private height = 50;
-  private width = 130;
+  private height = 35;
+  private width = 90;
   private top = 2;
   private left = 3;
 
   ngOnInit(): void {}
 
-  getHeight(index: number): number {
-    return this.height - index * 5;
+  getHeight(index: number) {
+    return this.height - index * 3;
   }
 
-  getWidth(index: number): number {
-    return this.width - index * 10;
+  getWidth(index: number) {
+    return this.width - index * 4;
   }
 
-  getTop(index: number): number {
-    return this.top + index * 2.3;
+  getTop(index: number) {
+    return this.top + index * 1.5;
   }
 
-  getLeft(index: number): number {
-    return this.left + index * 3.5;
+  getLeft(index: number) {
+    return this.left + index * 2;
   }
 }

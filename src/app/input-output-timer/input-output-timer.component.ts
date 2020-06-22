@@ -22,23 +22,23 @@ export class InputOutputTimerComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  setTimerLimit(timer: number): void {
+  setTimerLimit(timer: number) {
     this.timerLimit = timer;
   }
 
-  setStartCount(count: number): void {
+  setStartCount(count: number) {
     this.startCount = count;
   }
 
-  setPausedCount(count: number): void {
+  setPausedCount(count: number) {
     this.pausedCount = count;
   }
 
-  setStartTime(startTime: string): void {
+  setStartTime(startTime: string) {
     this.startTime = startTime;
   }
 
-  resetStartLogs(status: boolean): void {
+  resetStartLogs(status: boolean) {
     this.resetStartLog = status;
   }
 }

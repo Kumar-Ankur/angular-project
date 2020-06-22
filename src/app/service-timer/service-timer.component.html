@@ -1,20 +1,41 @@
-<div class="main">
-  <h2>Timer Using Service with Subject</h2>
-  <hr />
-  <div class="row">
-    <div class="col-md-4 main_display">
-      <app-display></app-display>
-    </div>
-    <div class="col-md-6 main_form">
-      <app-forms></app-forms>
+<app-navigation></app-navigation>
+<hr class="divider mt-0 mb-0" />
+<section class="section">
+  <div class="container">
+    <h1 class="title is-size-3 has-text-grey is-family-secondary mb-5">
+      Timer [Service With Subject]
+    </h1>
+  </div>
+  <div class="container">
+    <div class="tile is-ancestor">
+      <div class="tile">
+        <div class="tile is-parent">
+          <div class="tile is-child box">
+            <p class="title">Gauge</p>
+            <hr class="divider mt-0" />
+            <app-forms></app-forms>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <div class="tile is-child box">
+            <p class="title">Display</p>
+            <hr class="divider mt-0" />
+            <app-display></app-display>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical">
+        <div class="tile box is-child">
+          <p class="title">Counter</p>
+          <hr class="divider mt-0" />
+          <app-counter-status></app-counter-status>
+        </div>
+        <div class="tile box is-child">
+          <p class="title">Controller</p>
+          <hr class="divider mt-0" />
+          <app-logger></app-logger>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-5 main_logger">
-      <app-logger></app-logger>
-    </div>
-    <div class="col-md-5 main_counter">
-      <app-counter-status></app-counter-status>
-    </div>
-  </div>
-</div>
+</section>
