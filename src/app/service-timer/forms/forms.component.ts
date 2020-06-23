@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TimerService } from '../service-timer.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { TimerService } from '../service-timer.service';
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.scss'],
 })
-export class FormsComponent implements OnInit {
+export class FormsComponent implements OnInit, OnDestroy {
   inputText: number;
   isTimerStart: boolean;
   startCount: number;
@@ -95,5 +95,9 @@ export class FormsComponent implements OnInit {
     this.timerService.emitResetStartLogs.next(true);
     this.isTimerStart = false;
     clearInterval(this.timerInterval);
+  }
+
+  ngOnDestroy() {
+    this.setToInitialState();
   }
 }

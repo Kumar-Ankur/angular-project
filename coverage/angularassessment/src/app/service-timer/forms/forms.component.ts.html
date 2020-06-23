@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25.49% </span>
+                <span class="strong">46.15% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/51</span>
+                <span class='fraction'>24/52</span>
             </div>
         
             
@@ -36,16 +36,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">55.56% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>5/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24% </span>
+                <span class="strong">45.1% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/50</span>
+                <span class='fraction'>23/51</span>
             </div>
         
             
@@ -155,7 +155,11 @@
 <a name='L97'></a><a href='#L97'>97</a>
 <a name='L98'></a><a href='#L98'>98</a>
 <a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,19 +246,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit } from '@angular/core';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TimerService } from '../service-timer.service';
 &nbsp;
 @Component({
@@ -262,7 +270,7 @@ import { TimerService } from '../service-timer.service';
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.scss'],
 })
-export class FormsComponent implements OnInit {
+export class FormsComponent implements OnInit, OnDestroy {
   inputText: number;
   isTimerStart: boolean;
   startCount: number;
@@ -340,17 +348,21 @@ export class FormsComponent implements OnInit {
   }
 &nbsp;
   // Reset all the state to its initial value, if user clicked on reset button or change the value in input field.
-<span class="fstat-no" title="function not covered" >  setToInitialState(</span>): void {
-<span class="cstat-no" title="statement not covered" >    this.pausedTime = [];</span>
-<span class="cstat-no" title="statement not covered" >    this.startCount = 0;</span>
-<span class="cstat-no" title="statement not covered" >    this.pausedCount = 0;</span>
-<span class="cstat-no" title="statement not covered" >    this.isTimerStart = false;</span>
-<span class="cstat-no" title="statement not covered" >    this.timerService.setStartCountValue.next(this.startCount);</span>
-<span class="cstat-no" title="statement not covered" >    this.timerService.setPausedCountValue.next(this.pausedCount);</span>
-<span class="cstat-no" title="statement not covered" >    this.timerService.setTimerValue.next(0);</span>
-<span class="cstat-no" title="statement not covered" >    this.timerService.emitResetStartLogs.next(true);</span>
-<span class="cstat-no" title="statement not covered" >    this.isTimerStart = false;</span>
-<span class="cstat-no" title="statement not covered" >    clearInterval(this.timerInterval);</span>
+  setToInitialState(): void {
+    this.pausedTime = [];
+    this.startCount = 0;
+    this.pausedCount = 0;
+    this.isTimerStart = false;
+    this.timerService.setStartCountValue.next(this.startCount);
+    this.timerService.setPausedCountValue.next(this.pausedCount);
+    this.timerService.setTimerValue.next(0);
+    this.timerService.emitResetStartLogs.next(true);
+    this.isTimerStart = false;
+    clearInterval(this.timerInterval);
+  }
+&nbsp;
+  ngOnDestroy() {
+    this.setToInitialState();
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -360,7 +372,7 @@ export class FormsComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jun 23 2020 17:24:39 GMT+0530 (India Standard Time)
+                at Tue Jun 23 2020 17:52:00 GMT+0530 (India Standard Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
