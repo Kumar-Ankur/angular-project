@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { GridComponent } from './grid.component';
+import { SortByPipe } from '../ecommerce.pipe';
+import { RouterModule } from '@angular/router';
 
 describe('GridComponent', () => {
   let component: GridComponent;
@@ -8,9 +10,9 @@ describe('GridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GridComponent ]
-    })
-    .compileComponents();
+      imports: [RouterTestingModule],
+      declarations: [GridComponent, SortByPipe],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

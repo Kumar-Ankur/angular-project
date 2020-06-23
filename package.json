@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "prod:build": "ng build --prod --output-path docs --base-href 'https://kumar-ankur.github.io/angular-project/'",
-    "test": "ng test",
+    "test": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "serve": "serve -d ./dist/angularassessment"

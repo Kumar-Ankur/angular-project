@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GridComponent } from './grid.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CommonModule } from '@angular/common';
+import { NavigationModule } from '../navigation/navigation.module';
+import { GridRoutingModule } from './grid-routing.module';
 
 describe('GridComponent', () => {
   let component: GridComponent;
@@ -8,9 +12,9 @@ describe('GridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GridComponent ]
-    })
-    .compileComponents();
+      imports: [CommonModule, NavigationModule, GridRoutingModule, RouterTestingModule],
+      declarations: [GridComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +23,7 @@ describe('GridComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create grid component', () => {
     expect(component).toBeTruthy();
   });
 });
