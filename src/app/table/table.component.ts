@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { data } from './constant';
 import * as _ from 'lodash';
 import { TableInterface } from './table.model';
 import { HttpClient } from '@angular/common/http';
