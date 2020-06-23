@@ -3,8 +3,8 @@
 This project is generally the basic POC using latest Angular framwework in which there are 6
 routes and each routes are lazy loading with `preloaded startegy`.
 
-To Learn more about Angular, please check [Angular Doc](https://angular.io/docs).
-Want to see the application, please click on [Demo](https://kumar-ankur.github.io/angular-project/.
+To Learn more about Angular, please check [Angular Doc](https://angular.io/docs).\
+Want to see the application, please click on [Demo](https://kumar-ankur.github.io/angular-project/).
 
 - ## Route 1
 
