@@ -32,12 +32,17 @@ export class FormsComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // Function to set the input enter by the user
   setInput(event: any) {
     this.timerLimit = event.target.value;
     this.inputText = '';
     this.setToInitialState();
   }
 
+  /**
+   * function { handleButton}
+   * description: function to check if user clicked on start/pause button and emit the result to parent component respectively
+   */
   handleButton() {
     if (this.timerLimit > 0) {
       this.inputText = '';
@@ -67,11 +72,13 @@ export class FormsComponent implements OnInit {
     }
   }
 
+  // function to reset the state, if user clicked on reset button
   handleReset(): void {
     this.timerLimit = 0;
     this.setToInitialState();
   }
 
+  // Return true/false to check if user is able to see start/pause button.
   IsStartVisible(): boolean {
     if (this.timerLimit < 0) {
       return true;
@@ -81,6 +88,7 @@ export class FormsComponent implements OnInit {
     return true;
   }
 
+  // Reset all the state to its initial value, if user clicked on reset button or change the value in input field.
   setToInitialState(): void {
     this.pausedTime = [];
     this.startCount = 0;

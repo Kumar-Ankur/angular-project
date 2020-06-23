@@ -27,12 +27,17 @@ export class FormsComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // Function to set the input value once user entered value in input field
   onSelectedInput(event: any): void {
     this.inputText = event.target.value;
     this.text = '';
     this.setToInitialState();
   }
 
+  /**
+   * function { handleStartPause}
+   * description: function to check if user clicked on start/pause button and call the service to update teh state respectively
+   */
   handleStartPause(): void {
     if (this.inputText > 0) {
       this.text = '';
@@ -61,11 +66,14 @@ export class FormsComponent implements OnInit {
       }
     }
   }
+
+  // Function called when user clicked on reset button, to update the state to initial state
   handleReset(): void {
     this.inputText = 0;
     this.setToInitialState();
   }
 
+  // Return true/false to check if user is able to see start/pause button.
   IsStartVisible(): boolean {
     if (this.inputText < 0) {
       return true;
@@ -75,6 +83,7 @@ export class FormsComponent implements OnInit {
     return true;
   }
 
+  // Reset all the state to its initial value, if user clicked on reset button or change the value in input field.
   setToInitialState(): void {
     this.pausedTime = [];
     this.startCount = 0;

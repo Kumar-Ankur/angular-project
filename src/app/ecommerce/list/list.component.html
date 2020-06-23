@@ -1,13 +1,9 @@
-<div *ngFor="let product of products" class="column is-6">
+<div *ngFor="let product of products | sortBy: sortby:'price'" class="column is-6">
   <div class="box">
     <article class="media">
       <div class="media-left">
         <figure class="image is-64x64">
-          <img
-            src="{{ product.image }}"
-            alt="{{ product.product_name }}"
-            style="height: 64px; object-fit: cover;"
-          />
+          <img src="{{ product.image }}" alt="{{ product.product_name }}" style="height: 64px; object-fit: cover;" />
         </figure>
       </div>
       <div class="media-content">

@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 <hr class="divider mt-0 mb-0" />
-<section class="section">
+<section class="section" *ngIf="!isLoading">
   <div class="container">
     <h1 class="title is-size-3 has-text-grey is-family-secondary mb-5">
       Products
@@ -8,18 +8,10 @@
   </div>
   <div class="container mb-5">
     <div class="columns is-vcentered">
-      <div
-        class="column is-vcentered"
-        style="display: flex; flex-direction: row; align-items: center;"
-      >
+      <div class="column is-vcentered" style="display: flex; flex-direction: row; align-items: center;">
         <div class="dropdown mr-3" [ngClass]="{ 'is-active': filterOpen }">
           <div class="dropdown-trigger">
-            <button
-              class="button"
-              aria-haspopup="true"
-              aria-controls="dropdown-menu"
-              (click)="filterToggle()"
-            >
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" (click)="filterToggle()">
               <span>Filter by price</span>
               <span class="icon is-small">
                 <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -28,20 +20,11 @@
           </div>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
-              <a
-                (click)="filteredList(price)"
-                *ngFor="let price of priceList"
-                class="dropdown-item"
-              >
-                ₹ {{ price }}
-              </a>
+              <a (click)="filteredList(price)" *ngFor="let price of priceList" class="dropdown-item"> {{ price }} </a>
             </div>
           </div>
         </div>
-        <span
-          *ngFor="let priceFilter of filteredPrice"
-          class="tag is-medium mr-1"
-        >
+        <span *ngFor="let priceFilter of filteredPrice" class="tag is-medium mr-1">
           {{ priceFilter }}
           <button class="delete is-small" (click)="removePrice(priceFilter)">
             &times;
@@ -64,18 +47,16 @@
   </div>
   <div *ngIf="isGridSelected">
     <div class="container">
-      <app-grid
-        class="columns is-multiline is-mobile"
-        [products]="filteredProducts"
-      ></app-grid>
+      <app-grid class="columns is-multiline is-mobile" [products]="filteredProducts" [sortby]="sortby"></app-grid>
     </div>
   </div>
   <div *ngIf="!isGridSelected">
     <div class="container">
-      <app-list
-        class="columns is-multiline is-mobile"
-        [products]="filteredProducts"
-      ></app-list>
+      <app-list class="columns is-multiline is-mobile" [products]="filteredProducts" [sortby]="sortby"></app-list>
     </div>
   </div>
 </section>
+
+<div *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>

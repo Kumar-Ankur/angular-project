@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { data } from './constant';
 import * as _ from 'lodash';
+import { TableInterface } from './table.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-table',
@@ -18,26 +20,14 @@ export class TableComponent implements OnInit {
   isArrowVisible: boolean;
   isUpArrowVisible: boolean;
   isDownArrowVisible: boolean;
-  students: {
-    id: number;
-    name: string;
-    class: number;
-    sub1: string;
-    sub2: string;
-    sub3: string;
-  }[];
-  resetStudents: {
-    id: number;
-    name: string;
-    class: number;
-    sub1: string;
-    sub2: string;
-    sub3: string;
-  }[];
-  constructor() {
-    this.tableHeading = Object.keys(data[0]);
-    this.students = data;
-    this.resetStudents = data;
+  students: TableInterface[];
+  resetStudents: TableInterface[];
+  isLoading: boolean;
+
+  constructor(private http: HttpClient) {
+    this.tableHeading = [];
+    this.students = [];
+    this.resetStudents = [];
     this.reset = true;
     this.sortAscending = false;
     this.sortDescending = false;
@@ -47,10 +37,23 @@ export class TableComponent implements OnInit {
     this.isArrowVisible = false;
     this.isUpArrowVisible = false;
     this.isDownArrowVisible = false;
+    this.isLoading = true;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const API = 'https://angular-assessment-api.herokuapp.com/table';
+    this.http.get<TableInterface>(API).subscribe((response) => {
+      this.isLoading = false;
+      this.tableHeading = Object.keys(response[0]);
+      this.students = this.students.concat(response);
+      this.resetStudents = this.resetStudents.concat(response);
+    });
+  }
 
+  // Sort the table based on user click count
+  // Count = 1 : reset the table
+  // Count = 2 : sort table in ascending order
+  // Count = 3 : sort table in descending order
   sortingTable(name: string, count: number): void {
     if (count === 2) {
       const sortedData: any = _.orderBy(this.students.slice(), [name], ['asc']);
@@ -61,6 +64,7 @@ export class TableComponent implements OnInit {
     }
   }
 
+  // Function to update the sort count and call sortingTable function to sort the table accordingly.
   handleSort(name: string): void {
     if (!this.previousCategory) {
       this.previousCategory = name;
@@ -82,6 +86,7 @@ export class TableComponent implements OnInit {
     }
   }
 
+  // Check if user is able to see downArrowIcon or not.
   checkDownArrowVisible(heading: string): boolean {
     if (heading === this.sortCategory && this.sortCount === 3) {
       this.isDownArrowVisible = true;
@@ -91,6 +96,7 @@ export class TableComponent implements OnInit {
     return this.isDownArrowVisible;
   }
 
+  // Check if user is able to see upArrowIcon or not.
   checkUpArrowVisible(heading: string): boolean {
     if (heading === this.sortCategory && this.sortCount === 2) {
       this.isUpArrowVisible = true;
@@ -100,6 +106,7 @@ export class TableComponent implements OnInit {
     return this.isUpArrowVisible;
   }
 
+  // Check if user is able to see any icon: (UpArrow/DownArrow) or not
   checkArrowVisible(): boolean {
     if (this.sortCount === 1) {
       this.isArrowVisible = false;

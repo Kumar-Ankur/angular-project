@@ -1,10 +1,10 @@
-import { Component, OnInit, HostListener } from "@angular/core";
-import debounce from "lodash/debounce";
+import { Component, OnInit, HostListener } from '@angular/core';
+import debounce from 'lodash/debounce';
 
 @Component({
-  selector: "app-grid",
-  templateUrl: "./grid.component.html",
-  styleUrls: ["./grid.component.scss"],
+  selector: 'app-grid',
+  templateUrl: './grid.component.html',
+  styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit {
   constructor() {
@@ -18,7 +18,8 @@ export class GridComponent implements OnInit {
   isLoading: boolean;
   heightLength: number;
 
-  handleScroll = debounce(function () {
+  // Function to call update array list once user is at the bottom of the page
+  handleScroll = debounce(function() {
     this.arraySize = this.arraySize + 9;
     this.gridData = Array(this.arraySize).fill(0);
     this.isLoading = false;
@@ -26,18 +27,17 @@ export class GridComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @HostListener("window:scroll", ["$event"])
+  @HostListener('window:scroll', ['$event'])
   scrollHandler(event): void {
     const element = event.target;
-    if (
-      element.scrollTop + element.clientHeight >=
-      0.95 * element.scrollHeight
-    ) {
+    // Condition to check if user is at the bottom of the page
+    if (element.scrollTop + element.clientHeight >= 0.95 * element.scrollHeight) {
       this.isLoading = true;
       this.handleScroll();
     }
   }
 
+  // Function to call Alert box when user click on corresponding button.
   handleAlert(index: number): void {
     alert(`Button ${index + 1} is clicked!`);
   }

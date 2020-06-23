@@ -6,16 +6,11 @@
       Table
     </h1>
   </div>
-  <div class="container">
+  <div class="container" *ngIf="!isLoading">
     <table class="table is-bordered">
       <thead>
         <tr>
-          <th
-            *ngFor="let heading of tableHeading"
-            class="col"
-            style="cursor: pointer;"
-            (click)="handleSort(heading)"
-          >
+          <th *ngFor="let heading of tableHeading" class="col" style="cursor: pointer;" (click)="handleSort(heading)">
             {{ heading }}
             <span *ngIf="checkArrowVisible() && checkUpArrowVisible(heading)">
               <i class="fa fa-arrow-up"></i>
@@ -37,5 +32,8 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div *ngIf="isLoading">
+    <app-spinner></app-spinner>
   </div>
 </section>

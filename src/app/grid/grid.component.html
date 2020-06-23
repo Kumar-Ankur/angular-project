@@ -6,17 +6,11 @@
       Infinitely loading Grid
     </div>
   </div>
-  <div
-    id="infinite-grid-wrapper"
-    style="height: 600px; overflow: auto;"
-    (scroll)="scrollHandler($event)"
-  >
+  <div id="infinite-grid-wrapper" style="height: 600px; overflow: auto;" (scroll)="scrollHandler($event)">
     <div class="section pt-2 pl-4 columns is-multiline">
       <div class="column is-12" *ngFor="let grid of gridData; let i = index">
         <div class="box">
-          <button class="button is-primary" (click)="handleAlert(i)">
-            Click Me
-          </button>
+          <button class="button is-primary" (click)="handleAlert(i)">Click Me [ {{ i }} ]</button>
         </div>
       </div>
     </div>

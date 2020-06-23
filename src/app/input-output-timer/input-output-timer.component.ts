@@ -22,22 +22,27 @@ export class InputOutputTimerComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // Function to check the timer limit entered by the user
   setTimerLimit(timer: number) {
     this.timerLimit = timer;
   }
 
+  // Update the start count once user click on start button.
   setStartCount(count: number) {
     this.startCount = count;
   }
 
+  // Update the pause count once user click on pause button.
   setPausedCount(count: number) {
     this.pausedCount = count;
   }
 
+  // set the start time
   setStartTime(startTime: string) {
     this.startTime = startTime;
   }
 
+  // reset the start logs
   resetStartLogs(status: boolean) {
     this.resetStartLog = status;
   }
