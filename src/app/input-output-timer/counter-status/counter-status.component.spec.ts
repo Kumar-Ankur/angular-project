@@ -8,9 +8,8 @@ describe('CounterStatusComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CounterStatusComponent ]
-    })
-    .compileComponents();
+      declarations: [CounterStatusComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +20,10 @@ describe('CounterStatusComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should contain `Resume count` heading', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('p').textContent).toContain('Resume count');
   });
 });

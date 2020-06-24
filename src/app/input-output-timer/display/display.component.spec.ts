@@ -8,9 +8,8 @@ describe('DisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DisplayComponent ]
-    })
-    .compileComponents();
+      declarations: [DisplayComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +20,10 @@ describe('DisplayComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should contain `Count Down Timer` heading', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('p').textContent).toContain('Count Down Timer');
   });
 });

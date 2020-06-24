@@ -1,7 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, getTestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { EcommerceComponent } from './ecommerce.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
 import { CommonModule } from '@angular/common';
 import { EcommerceRoutingModule } from './ecommerce-routing.module';
 import { NavigationModule } from '../navigation/navigation.module';
@@ -16,7 +17,7 @@ describe('EcommerceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [CommonModule, EcommerceRoutingModule, NavigationModule, SpinnerModule, RouterTestingModule, HttpClientModule],
+      imports: [CommonModule, EcommerceRoutingModule, NavigationModule, SpinnerModule, RouterTestingModule, HttpClientTestingModule],
       declarations: [EcommerceComponent, GridComponent, ListComponent, SortByPipe],
     }).compileComponents();
   }));
