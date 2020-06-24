@@ -6,21 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nested-image.component.scss'],
 })
 export class NestedImageComponent implements OnInit {
-  numbers;
-  text;
+  numbers: number[];
+  text: string;
+  height: number;
+  width: number;
+  top: number;
+  left: number;
   constructor() {
     this.numbers = Array(11).fill(0);
     this.text = 'Floating Text Using Angular';
+    this.height = 35;
+    this.width = 90;
+    this.top = 2;
+    this.left = 3;
   }
-  private height = 35;
-  private width = 90;
-  private top = 2;
-  private left = 3;
 
   ngOnInit(): void {}
 
   // Function to return the height based on nested container index.
-  getHeight(index: number) {
+  getHeight(index: number): number {
     return this.height - index * 3;
   }
 
