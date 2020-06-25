@@ -30,11 +30,16 @@ export class EcommerceComponent implements OnInit {
 
   ngOnInit(): void {
     const API = 'https://angular-assessment-api.herokuapp.com/';
-    this.http.get<EcommerceInterface[]>(API).subscribe((response) => {
-      this.isLoading = false;
-      this.products = this.products.concat(response);
-      this.filteredProducts = this.products;
-    });
+    this.http.get<EcommerceInterface[]>(API).subscribe(
+      (response) => {
+        this.isLoading = false;
+        this.products = this.products.concat(response);
+        this.filteredProducts = this.products;
+      },
+      (error: any) => {
+        console.log(`Error: ${error}`);
+      }
+    );
   }
 
   // Function to check if grid is selected by the user.

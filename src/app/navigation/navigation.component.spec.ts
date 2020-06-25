@@ -24,4 +24,12 @@ describe('NavigationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('check `handleMenuToggle` function', () => {
+    component.menuOpen = false;
+    fixture.detectChanges();
+    component.handleMenuToggle();
+    fixture.detectChanges();
+    expect(component.menuOpen).toBe(true);
+  });
 });

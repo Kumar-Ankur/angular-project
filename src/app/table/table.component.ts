@@ -41,12 +41,17 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     const API = 'https://angular-assessment-api.herokuapp.com/table';
-    this.http.get<TableInterface>(API).subscribe((response) => {
-      this.isLoading = false;
-      this.tableHeading = Object.keys(response[0]);
-      this.students = this.students.concat(response);
-      this.resetStudents = this.resetStudents.concat(response);
-    });
+    this.http.get<TableInterface>(API).subscribe(
+      (response) => {
+        this.isLoading = false;
+        this.tableHeading = Object.keys(response[0]);
+        this.students = this.students.concat(response);
+        this.resetStudents = this.resetStudents.concat(response);
+      },
+      (error: any) => {
+        console.log(`Error: ${error}`);
+      }
+    );
   }
 
   // Sort the table based on user click count
