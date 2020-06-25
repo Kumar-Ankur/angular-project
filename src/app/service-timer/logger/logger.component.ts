@@ -1,33 +1,27 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TimerService } from '../service-timer.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-logger',
   templateUrl: './logger.component.html',
   styleUrls: ['./logger.component.scss'],
 })
-export class LoggerComponent implements OnInit, OnDestroy {
+export class LoggerComponent implements OnInit {
   startList: string[];
-  startTimeSubscription: Subscription;
-  resetTimeSubscription: Subscription;
   constructor(private timerService: TimerService) {
     this.startList = [];
   }
 
   ngOnInit(): void {
-    this.resetTimeSubscription = this.timerService.emitResetStartLogs.subscribe((reset: boolean) => {
-      if (reset) {
+    this.timerService.TimerServiceWithSubject.subscribe((value) => {
+      if (value.resetStartLogs) {
         this.startList = [];
       }
     });
-    this.startTimeSubscription = this.timerService.setStartTime.subscribe((time: string) => {
-      this.startList.push(time);
+    this.timerService.TimerServiceWithSubject.subscribe((value) => {
+      if (value.startTime) {
+        this.startList.push(value.startTime);
+      }
     });
-  }
-
-  ngOnDestroy() {
-    this.resetTimeSubscription.unsubscribe();
-    this.startTimeSubscription.unsubscribe();
   }
 }

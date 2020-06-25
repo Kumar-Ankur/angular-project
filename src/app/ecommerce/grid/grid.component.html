@@ -1,21 +1,42 @@
-<div *ngFor="let product of products | sortBy: sortby:'price'" class="column is-3">
-  <div class="card">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <img src="{{ product.image }}" alt="{{ product.product_name }}" style="object-fit: cover;" />
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">{{ product.product_name }}</p>
-          <p class="subtitle is-6">₹ {{ product.price }}</p>
-        </div>
+<div *ngFor="let product of products | sortBy: sortby:'price'" [ngClass]="isGridSelected ? 'column is-3' : 'column is-6'">
+  <div [ngClass]="isGridSelected ? 'card' : 'box'">
+    <article *ngIf="isGridSelected">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="{{ product.image }}" alt="{{ product.product_name }}" style="object-fit: cover;" />
+        </figure>
       </div>
 
-      <div class="content">
-        {{ product.description }}
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{ product.product_name }}</p>
+            <p class="subtitle is-6">₹ {{ product.price }}</p>
+          </div>
+        </div>
+
+        <div class="content">
+          {{ product.description }}
+        </div>
       </div>
-    </div>
+    </article>
+
+    <article class="media" *ngIf="!isGridSelected">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <img src="{{ product.image }}" alt="{{ product.product_name }}" style="height: 64px; object-fit: cover;" />
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{ product.product_name }}</strong> -
+            <small>₹ {{ product.price }}</small>
+            <br />
+            {{ product.description }}.
+          </p>
+        </div>
+      </div>
+    </article>
   </div>
 </div>

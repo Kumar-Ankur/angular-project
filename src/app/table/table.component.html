@@ -12,10 +12,10 @@
         <tr>
           <th *ngFor="let heading of tableHeading" class="col" style="cursor: pointer;" (click)="handleSort(heading)">
             {{ heading }}
-            <span *ngIf="checkArrowVisible() && checkUpArrowVisible(heading)">
+            <span *ngIf="heading === sortCategory && sortCount === 2">
               <i class="fa fa-arrow-up"></i>
             </span>
-            <span *ngIf="checkArrowVisible() && checkDownArrowVisible(heading)">
+            <span *ngIf="heading === sortCategory && sortCount === 3">
               <i class="fa fa-arrow-down"></i>
             </span>
           </th>

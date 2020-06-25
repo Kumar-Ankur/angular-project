@@ -89,35 +89,4 @@ export class TableComponent implements OnInit {
       this.sortingTable(name, this.sortCount);
     }
   }
-
-  // Check if user is able to see downArrowIcon or not.
-  checkDownArrowVisible(heading: string): boolean {
-    if (heading === this.sortCategory && this.sortCount === 3) {
-      this.isDownArrowVisible = true;
-    } else {
-      this.isDownArrowVisible = false;
-    }
-    return this.isDownArrowVisible;
-  }
-
-  // Check if user is able to see upArrowIcon or not.
-  checkUpArrowVisible(heading: string): boolean {
-    if (heading === this.sortCategory && this.sortCount === 2) {
-      this.isUpArrowVisible = true;
-    } else {
-      this.isUpArrowVisible = false;
-    }
-    return this.isUpArrowVisible;
-  }
-
-  // Check if user is able to see any icon: (UpArrow/DownArrow) or not
-  checkArrowVisible(): boolean {
-    if (this.sortCount === 1) {
-      this.isArrowVisible = false;
-    } else {
-      this.isArrowVisible = true;
-    }
-
-    return this.isArrowVisible;
-  }
 }

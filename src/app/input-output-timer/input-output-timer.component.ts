@@ -47,3 +47,5 @@ export class InputOutputTimerComponent implements OnInit {
     this.resetStartLog = status;
   }
 }
+
+// Will add one event emmiter here only

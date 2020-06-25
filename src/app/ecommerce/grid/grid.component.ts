@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GridComponent implements OnInit {
   @Input() products: any;
   @Input() sortby: string;
+  @Input() isGridSelected: boolean;
   constructor() {}
 
   ngOnInit(): void {}

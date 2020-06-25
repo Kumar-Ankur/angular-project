@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { TimerService } from './service-timer.service';
 
 @Component({
   selector: 'app-service-timer',
   templateUrl: './service-timer.component.html',
-  styleUrls: ['./service-timer.component.scss']
+  styleUrls: ['./service-timer.component.scss'],
 })
-export class ServiceTimerComponent implements OnInit {
+export class ServiceTimerComponent implements OnInit, OnDestroy {
+  constructor(private timerService: TimerService) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  ngOnDestroy() {
+    this.timerService.unsubscribeService();
   }
-
 }

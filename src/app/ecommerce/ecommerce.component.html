@@ -45,14 +45,10 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isGridSelected">
+
+  <div>
     <div class="container">
-      <app-grid class="columns is-multiline is-mobile" [products]="filteredProducts" [sortby]="sortby"></app-grid>
-    </div>
-  </div>
-  <div *ngIf="!isGridSelected">
-    <div class="container">
-      <app-list class="columns is-multiline is-mobile" [products]="filteredProducts" [sortby]="sortby"></app-list>
+      <app-grid class="columns is-multiline is-mobile" [products]="filteredProducts" [sortby]="sortby" [isGridSelected]="isGridSelected"></app-grid>
     </div>
   </div>
 </section>
