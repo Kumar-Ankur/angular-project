@@ -13,20 +13,14 @@
           <div class="tile is-child box">
             <p class="title">Gauge</p>
             <hr class="divider mt-0" />
-            <app-forms
-              (emitTimerValue)="setTimerLimit($event)"
-              (emitStartCount)="setStartCount($event)"
-              (emitPausedCount)="setPausedCount($event)"
-              (emitStartTime)="setStartTime($event)"
-              (emitResetStartLogs)="resetStartLogs($event)"
-            ></app-forms>
+            <app-forms (TimerEmitter)="setTimerEmitter($event)"></app-forms>
           </div>
         </div>
         <div class="tile is-parent">
           <div class="tile is-child box">
             <p class="title">Display</p>
             <hr class="divider mt-0" />
-            <app-display [timerLimit]="timerLimit"></app-display>
+            <app-display [timerLimit]="timerValue.timerLimit"></app-display>
           </div>
         </div>
       </div>
@@ -34,18 +28,12 @@
         <div class="tile box is-child">
           <p class="title">Counter</p>
           <hr class="divider mt-0" />
-          <app-counter-status
-            [startCount]="startCount"
-            [pausedCount]="pausedCount"
-          ></app-counter-status>
+          <app-counter-status [startCount]="timerValue.startCount" [pausedCount]="timerValue.pausedCount"></app-counter-status>
         </div>
         <div class="tile box is-child">
           <p class="title">Controller</p>
           <hr class="divider mt-0" />
-          <app-logger
-            [startTime]="startTime"
-            [resetStartLog]="resetStartLog"
-          ></app-logger>
+          <app-logger [startTime]="timerValue.startTime" [resetStartLog]="timerValue.resetLogs"></app-logger>
         </div>
       </div>
     </div>

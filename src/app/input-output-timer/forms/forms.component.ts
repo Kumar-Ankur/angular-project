@@ -1,5 +1,12 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
+class TimerEmitterInterface {
+  timerLimit?: number;
+  startCount?: number;
+  pausedCount?: number;
+  startTime?: string;
+  resetLogs?: boolean;
+}
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
@@ -14,11 +21,7 @@ export class FormsComponent implements OnInit {
   timerInterval: any;
   isTimerStart: boolean;
   inputText: string;
-  @Output() emitTimerValue: EventEmitter<number> = new EventEmitter<number>();
-  @Output() emitStartCount: EventEmitter<number> = new EventEmitter<number>();
-  @Output() emitPausedCount: EventEmitter<number> = new EventEmitter<number>();
-  @Output() emitStartTime: EventEmitter<string> = new EventEmitter<string>();
-  @Output() emitResetStartLogs: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() TimerEmitter: EventEmitter<TimerEmitterInterface> = new EventEmitter<TimerEmitterInterface>();
 
   constructor() {
     this.timerLimit = 0;
@@ -49,24 +52,34 @@ export class FormsComponent implements OnInit {
       this.isTimerStart = !this.isTimerStart;
       if (this.isTimerStart) {
         this.startCount = this.startCount + 1;
-        this.emitStartCount.emit(this.startCount);
         this.startTime = new Date().toString();
-        this.emitStartTime.emit(this.startTime);
-        this.emitResetStartLogs.emit(false);
+        this.TimerEmitter.emit({
+          startCount: this.startCount,
+          startTime: this.startTime,
+          resetLogs: false,
+          pausedCount: this.pausedCount,
+        });
         this.timerInterval = setInterval(() => {
           if (this.timerLimit === 0) {
             clearInterval(this.timerInterval);
             this.IsStartVisible();
             this.isTimerStart = false;
           }
-          this.emitTimerValue.emit(this.timerLimit);
+          this.TimerEmitter.emit({
+            timerLimit: this.timerLimit,
+          });
           this.timerLimit = this.timerLimit - 1;
         }, 1000);
       } else {
         this.pausedCount = this.pausedCount + 1;
-        this.emitPausedCount.emit(this.pausedCount);
-        this.emitResetStartLogs.emit(false);
-        this.pausedTime.push(this.timerLimit + 1);
+        this.TimerEmitter.emit({
+          startCount: this.startCount,
+          startTime: this.startTime,
+          resetLogs: false,
+          pausedCount: this.pausedCount,
+          timerLimit: this.timerLimit,
+        });
+        this.pausedTime.push(this.timerLimit);
         clearInterval(this.timerInterval);
       }
     }
@@ -94,10 +107,12 @@ export class FormsComponent implements OnInit {
     this.startCount = 0;
     this.pausedCount = 0;
     this.isTimerStart = false;
-    this.emitTimerValue.emit(0);
-    this.emitStartCount.emit(this.startCount);
-    this.emitPausedCount.emit(this.pausedCount);
-    this.emitResetStartLogs.emit(true);
+    this.TimerEmitter.emit({
+      startCount: this.startCount,
+      pausedCount: this.pausedCount,
+      resetLogs: true,
+      timerLimit: 0,
+    });
     clearInterval(this.timerInterval);
   }
 }
